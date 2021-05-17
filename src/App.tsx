@@ -1,6 +1,6 @@
 import React, { useState, useRef, useLayoutEffect } from 'react';
 import { Engine, Scene, SceneEventArgs } from 'react-babylonjs';
-import { Vector3, Scene as BabylonScene, WebXRHitTest, IWebXRHitResult, WebXRBackgroundRemover, WebXRAnchorSystem } from '@babylonjs/core';
+import { Vector3, Scene as BabylonScene, WebXRHitTest, IWebXRHitResult, WebXRBackgroundRemover, WebXRAnchorSystem, WebXRDomOverlay } from '@babylonjs/core';
 import { Button } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,6 +30,8 @@ function App() {
   const toggleState = () => {
     setCheckState((checkState) => !checkState);
   }
+
+  const [overlayType, setOverlayType] = useState<Nullable<string>>(null);
 
   const domOverlayRef = useRef(null);
   const placeButtonRef = useRef<HTMLButtonElement>(null);
@@ -76,8 +78,7 @@ function App() {
 
         model.material = material1;
 
-        const featureName = (WebXRFeatureName as any).DOM_OVERLAY
-        console.log('xr started:', featureName, xr);
+        console.log('xr started:', xr);
         const fm = xr.baseExperience.featuresManager;
 
         const sceneMeshes = [model];
@@ -122,9 +123,12 @@ function App() {
         const anchors = fm.enableFeature(WebXRAnchorSystem, 'latest');
         const xrBackgroundRemover = fm.enableFeature(WebXRBackgroundRemover.Name);
 
-        const domOverlayFeature = fm.enableFeature(featureName, 1, {
-          element: domOverlayRef.current
-        });
+        const domOverlayFeature = fm.enableFeature(WebXRFeatureName.DOM_OVERLAY, 1, {
+          element: '.dom-overlay-container' // domOverlayRef.current
+        }, undefined, false) as WebXRDomOverlay;
+        xr.baseExperience.onStateChangedObservable.add((eventData: WebXRState) => {
+          setOverlayType(domOverlayFeature.domOverlayType);
+        })
       })();
     }
   }, [scene, domOverlayRef]);
@@ -139,7 +143,7 @@ function App() {
     <div className="App">
       <div ref={domOverlayRef} className="dom-overlay-container">
         <p>
-          dom-overlay XR (part of "immersive-ar" experience)
+          dom-overlay XR ({overlayType === null ? 'part of "immersive-ar" experience' : `connected: ${overlayType}`})
         </p>
         <div className={classes.root}>
           <Button ref={placeButtonRef} variant="contained" color="primary">Place Model</Button>
