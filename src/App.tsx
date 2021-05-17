@@ -3,6 +3,7 @@ import { Engine, Scene, SceneEventArgs } from 'react-babylonjs';
 import { Vector3, Scene as BabylonScene, WebXRHitTest, IWebXRHitResult, WebXRBackgroundRemover, WebXRAnchorSystem } from '@babylonjs/core';
 import { Button } from '@material-ui/core';
 import Switch from '@material-ui/core/Switch';
+import { makeStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import './App.css';
@@ -13,6 +14,14 @@ import { MeshBuilder } from '@babylonjs/core/Meshes/meshBuilder';
 import { Quaternion } from '@babylonjs/core/Maths/math.vector';
 import { StandardMaterial } from '@babylonjs/core/Materials/standardMaterial';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 function App() {
   const [checkState, setCheckState] = useState(false);
@@ -124,18 +133,21 @@ function App() {
     setScene(args.scene)
   }
 
+  const classes = useStyles();
+
   return (
     <div className="App">
       <div ref={domOverlayRef} className="dom-overlay-container">
         <p>
           dom-overlay XR (part of "immersive-ar" experience)
         </p>
-        <Button ref={placeButtonRef} variant="contained" color="primary">Place Model</Button>
-        <Button variant="contained" color="secondary">Another</Button>
-        <FormControlLabel
-          control={<Switch ref={switchColorRef} checked={checkState} onChange={toggleState} name="checkedA" />}
-          label={`color ${checkState ? 'red' : 'green'}`}
-        />
+        <div className={classes.root}>
+          <Button ref={placeButtonRef} variant="contained" color="primary">Place Model</Button>
+          <FormControlLabel
+            control={<Switch ref={switchColorRef} checked={checkState} onChange={toggleState} name="checkedA" />}
+            label={`color ${checkState ? 'red' : 'green'}`}
+          />
+        </div>
       </div>
       <Engine antialias adaptToDeviceRatio canvasId='babylon-canvas'>
         <Scene onSceneMount={onSceneMount}>
