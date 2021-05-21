@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/xr-dom-overlay-react/static/css/main.30c8df27.chunk.css",
-    "main.js": "/xr-dom-overlay-react/static/js/main.5ef925bb.chunk.js",
-    "main.js.map": "/xr-dom-overlay-react/static/js/main.5ef925bb.chunk.js.map",
+    "main.js": "/xr-dom-overlay-react/static/js/main.5d9be7ea.chunk.js",
+    "main.js.map": "/xr-dom-overlay-react/static/js/main.5d9be7ea.chunk.js.map",
     "runtime-main.js": "/xr-dom-overlay-react/static/js/runtime-main.b771e102.js",
     "runtime-main.js.map": "/xr-dom-overlay-react/static/js/runtime-main.b771e102.js.map",
-    "static/js/2.e85d577b.chunk.js": "/xr-dom-overlay-react/static/js/2.e85d577b.chunk.js",
-    "static/js/2.e85d577b.chunk.js.map": "/xr-dom-overlay-react/static/js/2.e85d577b.chunk.js.map",
+    "static/js/2.77520771.chunk.js": "/xr-dom-overlay-react/static/js/2.77520771.chunk.js",
+    "static/js/2.77520771.chunk.js.map": "/xr-dom-overlay-react/static/js/2.77520771.chunk.js.map",
     "static/js/3.0d56299a.chunk.js": "/xr-dom-overlay-react/static/js/3.0d56299a.chunk.js",
     "static/js/3.0d56299a.chunk.js.map": "/xr-dom-overlay-react/static/js/3.0d56299a.chunk.js.map",
     "index.html": "/xr-dom-overlay-react/index.html",
     "static/css/main.30c8df27.chunk.css.map": "/xr-dom-overlay-react/static/css/main.30c8df27.chunk.css.map",
-    "static/js/2.e85d577b.chunk.js.LICENSE.txt": "/xr-dom-overlay-react/static/js/2.e85d577b.chunk.js.LICENSE.txt"
+    "static/js/2.77520771.chunk.js.LICENSE.txt": "/xr-dom-overlay-react/static/js/2.77520771.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b771e102.js",
-    "static/js/2.e85d577b.chunk.js",
+    "static/js/2.77520771.chunk.js",
     "static/css/main.30c8df27.chunk.css",
-    "static/js/main.5ef925bb.chunk.js"
+    "static/js/main.5d9be7ea.chunk.js"
   ]
 }
