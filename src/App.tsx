@@ -155,9 +155,11 @@ function App() {
       </div>
       <Engine antialias adaptToDeviceRatio canvasId='babylon-canvas'>
         <Scene onSceneMount={onSceneMount}>
-          <freeCamera name='camera1' position={new Vector3(0, 5, -10)} setTarget={[Vector3.Zero()]} />
+          <arcRotateCamera name='camera1' target={Vector3.Zero()} radius={3} alpha={Math.PI / 4} beta={Math.PI / 4} />
           <hemisphericLight name='light1' intensity={0.7} direction={Vector3.Up()} />
-          <box name='box1' size={2} />
+          <box name='box1' size={0.5}>
+              <standardMaterial name='box1mat' diffuseColor={checkState ? Color3.Red() : Color3.Green()} specularColor={Color3.Black()} />
+          </box>
         </Scene>
       </Engine>
     </div>
